@@ -1,0 +1,39 @@
+name: release_notes_gate
+description: >-
+  Release notes and "what's new" for Flutter, from GitHub Releases,
+  CHANGELOG.md, any REST API or your own source. Timeline UI with sections,
+  version badges and an update summary, fully themeable and replaceable.
+version: 0.1.0
+repository: https://github.com/rachadaccoumeh/release_notes_gate
+issue_tracker: https://github.com/rachadaccoumeh/release_notes_gate/issues
+topics:
+  - release-notes
+  - changelog
+  - whats-new
+  - github-releases
+  - app-update
+
+environment:
+  sdk: ^3.7.0
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # GitHub Releases API, raw CHANGELOG.md and the HTTP JSON source.
+  http: ^1.6.0
+
+  # Reads the running app version.
+  package_info_plus: ^10.2.2
+
+  # Default last-seen version store and offline cache.
+  shared_preferences: ^2.5.6
+
+  # Opens release pages and download links.
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
