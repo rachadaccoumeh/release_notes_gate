@@ -18,7 +18,8 @@ typedef ReleaseCardBuilder =
       required bool initiallyExpanded,
     });
 
-/// The releases, newest first, on a rail with a node per release.
+/// The releases, newest first, on a rail with a node per release. A single
+/// release has no order to show, so it gets no rail and takes the full width.
 ///
 /// Not scrollable itself: place it in a `ListView` or a
 /// `SingleChildScrollView`. Works alone with any list of notes.
@@ -111,6 +112,7 @@ class ReleaseNotesTimeline extends StatelessWidget {
               i == 0,
               i == sorted.length - 1,
               expanded.contains(sorted[i].version),
+              showRail: sorted.length > 1,
             ),
           ),
       ],
@@ -123,8 +125,9 @@ class ReleaseNotesTimeline extends StatelessWidget {
     ReleaseBadge? badge,
     bool isFirst,
     bool isLast,
-    bool initiallyExpanded,
-  ) {
+    bool initiallyExpanded, {
+    required bool showRail,
+  }) {
     final builder = releaseBuilder;
     if (builder != null) {
       return builder(
@@ -143,6 +146,7 @@ class ReleaseNotesTimeline extends StatelessWidget {
       isFirst: isFirst,
       isLast: isLast,
       initiallyExpanded: initiallyExpanded,
+      showRail: showRail,
       onToggle:
           onReleaseToggled == null
               ? null

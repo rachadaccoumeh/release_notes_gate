@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changes
+
+* A timeline with a single release draws no rail, so its cards take the full width
+
 ## 0.1.0
 
 ### Features

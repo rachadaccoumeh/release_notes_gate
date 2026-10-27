@@ -120,6 +120,20 @@ void main() {
       },
     );
 
+    testWidgets('a single release has no rail; several do', (tester) async {
+      await tester.pumpWidget(
+        wrap(ReleaseNotesTimeline(notes: [notes.last], animateEntrance: false)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(TimelineRow), findsNothing);
+
+      await tester.pumpWidget(
+        wrap(ReleaseNotesTimeline(notes: notes, animateEntrance: false)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(TimelineRow), findsNWidgets(notes.length));
+    });
+
     testWidgets('shows the section heading, count and the Fixes label', (
       tester,
     ) async {
